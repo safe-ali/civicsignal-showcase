@@ -133,7 +133,7 @@
 
   .fp-head-row{display:flex;align-items:center;justify-content:space-between;gap:40px;}
   .fp-head-copy{flex:1 1 auto;min-width:0;}
-  .fp-head-graphic{flex:0 0 auto;width:140px;height:140px;display:none !important;}
+  .fp-head-graphic{flex:0 0 auto;width:140px;height:140px;display:none;}
   @media(min-width:820px){.fp-head-graphic{display:block;}}
   .fp-radar-mark{width:100%;height:100%;overflow:visible;}
   .fp-radar-ring{fill:none;stroke:rgba(2,32,105,0.22);stroke-width:1.2;}
@@ -148,32 +148,48 @@
   }
 
   .fp-carousel-wrap{position:relative;margin-top:24px;}
-  .fp-carousel{display:flex;gap:16px;overflow-x:auto;padding:0 44px 8px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+  .fp-carousel{display:flex;gap:16px;overflow-x:auto;padding:0 0 8px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
   .fp-carousel::-webkit-scrollbar{height:6px;}
   .fp-carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
   .fp-arrow{position:absolute;top:40%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--navy-deep);cursor:pointer;z-index:2;box-shadow:0 4px 10px rgba(2,32,105,0.1);}
-  .fp-arrow-prev{left:6px;}
-  .fp-arrow-next{right:6px;}
+  .fp-arrow-prev{left:-50px;}
+  .fp-arrow-next{right:-50px;}
+  @media(max-width:1220px){.fp-arrow-prev{left:6px;}.fp-arrow-next{right:6px;}.fp-carousel{padding:0 44px 8px;}}
   @media(max-width:760px){.fp-arrow{display:none;}}
   .fp-see-all{display:inline-block;margin-top:18px;color:#fff;font-weight:700;font-size:14px;background:var(--red);padding:15px 26px;text-decoration:none;transition:background .15s ease;}
   .fp-see-all:hover{background:#c91b1f;}
+  .fp-see-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);text-decoration:none;}
+  .fp-see-link::before{content:'';display:block;flex:0 0 auto;width:22px;height:3px;background:var(--red);}
+  .fp-see-link:hover{color:var(--red);}
+  @media(max-width:600px){
+    .fp-carousel{gap:6px;padding:0;}
+    .fp-flip-card{zoom:0.29;}
+  }
 
   /* ---- fingerprint mini-cards: same flip-card component as the dedicated Fingerprints page ---- */
-  .fp-flip-card{flex:0 0 272px;perspective:1600px;height:454px;}
+  .fp-flip-card{flex:0 0 340px;perspective:1600px;height:460px;}
   .fp-flip-card:hover .fp-flip-inner{box-shadow:0 16px 32px rgba(2,32,105,0.12);transform:translateY(-2px);}
   .fp-flip-card:hover .fp-flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
   .fp-flip-inner{position:relative;width:100%;height:100%;cursor:pointer;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1),box-shadow .25s ease;box-shadow:0 1px 3px rgba(2,32,105,0.06);border-radius:0;}
   .fp-flip-inner.is-flipped{transform:rotateY(180deg);}
-  .fp-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0;padding:16px 18px 12px;display:flex;flex-direction:column;gap:7px;overflow:hidden;background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));}
-  .fp-back{transform:rotateY(180deg);background:var(--blue);border-color:var(--blue);border-top-color:#fff;color:#fff;}
+  .fp-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));}
+  .fp-back{transform:rotateY(180deg);background:var(--blue);border-color:var(--blue);border-top-color:#fff;color:#fff;padding:18px 22px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;}
+  .fp-back > *{flex-shrink:0;}
   .fp-back .fp-back-title{color:#fff;}
-  .fp-back .fp-back-meta-item .k{color:rgba(255,255,255,0.65);}
-  .fp-back .fp-back-meta-item .v{color:#fff;}
-  .fp-back .fp-back-meta-item .v a{color:#fff;border-bottom-color:rgba(255,255,255,0.45);}
+  .fp-back .fp-back-meta-item .k, .fp-back .fp-back-meta-single .k{color:rgba(255,255,255,0.65);}
+  .fp-back .fp-back-meta-item .v, .fp-back .fp-back-meta-single .v{color:#fff;}
+  .fp-back .fp-back-meta-item .v a, .fp-back .fp-back-meta-single .v a{color:#fff;border-bottom-color:rgba(255,255,255,0.45);}
   .fp-back .fp-back-bio{color:rgba(255,255,255,0.85);-webkit-line-clamp:2;}
-  .fp-back .fp-back-section{border-top-color:rgba(255,255,255,0.25);}
-  .fp-back .fp-back-section-label{color:rgba(255,255,255,0.65);}
   .fp-back .fp-social-chip{color:#fff;background:rgba(255,255,255,0.14);}
+  .fp-back .fp-tag{color:#fff;background:rgba(255,255,255,0.14);}
+  .fp-back .fp-tag-more{color:rgba(255,255,255,0.65);}
+  .fp-back .fp-newsroom-size{color:#fff;}
+  .fp-back .fp-ei-bar-label{color:rgba(255,255,255,0.85);}
+  .fp-back .fp-ei-bar-track{background:rgba(255,255,255,0.22);}
+  .fp-back .fp-ei-bar-fill{background:#fff;}
+  .fp-back .fp-ei-inline b{color:#fff;}
+  .fp-back .fp-back-section{border-top:2px solid rgba(255,255,255,0.9);padding-top:10px;}
+  .fp-back .fp-back-section-label{color:rgba(255,255,255,0.65);}
   .fp-back .fp-back-empty{color:rgba(255,255,255,0.65);}
   .fp-ei-breakdown{display:flex;flex-direction:column;gap:6px;}
   .fp-ei-breakdown-row{display:grid;grid-template-columns:78px 1fr 32px;align-items:center;gap:8px;}
@@ -182,31 +198,38 @@
   .fp-ei-breakdown-fill{height:100%;background:#fff;border-radius:0;}
   .fp-ei-breakdown-row span:last-child{font-size:10px;font-weight:700;color:#fff;text-align:right;}
   .fp-flip-icon{position:absolute;top:14px;right:14px;width:20px;height:20px;border-radius:50%;background:var(--bg-alt);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
-  .fp-back .fp-flip-icon{background:rgba(255,255,255,0.16);color:#fff;}
-  .fp-top{position:relative;}
-  .fp-top-row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;margin-bottom:4px;padding-right:26px;flex-wrap:nowrap;}
-  .fp-card-name{flex:1 1 auto;font-weight:900;font-size:15px;line-height:1.25;color:var(--ink);letter-spacing:-0.01em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .fp-type-badge{flex:0 0 auto;font-family:var(--font-mono);font-size:6.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:0;padding:2px 4px;white-space:nowrap;ce:nowrap;}
+  .fp-back .fp-flip-icon{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.16);color:#fff;}
+  .fp-top{position:relative;flex:0 0 auto;padding:20px 22px 10px;}
+  .fp-icon-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .fp-card-name{display:block;font-weight:900;font-size:19px;line-height:1.25;color:var(--ink);letter-spacing:-0.01em;margin-bottom:6px;padding-right:26px;}
+  .fp-type-badge{display:block;width:fit-content;font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:0;padding:3px 6px;margin-bottom:6px;} 4px;white-space:nowrap;ce:nowrap;}
   .fp-type-badge[data-type="Push Media"]{background:#F0653D;}
   .fp-type-badge[data-type="Creator"]{background:#00B8A9;}
   .fp-type-badge[data-type="Digital-native publisher"]{background:#1D78BE;}
-  .fp-meta-row{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-family:var(--font-mono);font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint);}
+  .fp-meta-row{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
   .fp-meta-row .fp-lang{font-weight:700;color:var(--ink);font-size:11.5px;letter-spacing:0.01em;}
-  .fp-body{position:relative;border-top:2px solid var(--ink);padding-top:14px;padding-bottom:22px;margin-top:12px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow:hidden;}
-  .fp-radar-box{width:130px;height:130px;margin:0 auto;position:relative;}
+  .fp-divider{flex:0 0 auto;height:0;border-top:2px solid var(--ink);}
+  .fp-body{position:relative;padding:16px 22px 26px;display:flex;flex-direction:column;gap:16px;flex:1;min-height:0;overflow:hidden;}
+  .fp-radar-box{width:190px;height:190px;margin:0 auto;position:relative;flex:0 0 190px;}
+  .fp-radar-anim{transform-origin:100px 100px;transform:scale(0.25);opacity:0;}
+  .fp-radar-box.is-in .fp-radar-anim{animation:fp-radar-pop .7s cubic-bezier(.2,.8,.2,1) forwards;}
+  @keyframes fp-radar-pop{0%{transform:scale(0.25);opacity:0;}70%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}}
+  @media(prefers-reduced-motion:reduce){.fp-radar-anim{transform:none;opacity:1;}.fp-radar-box.is-in .fp-radar-anim{animation:none;}}
   .fp-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;}
   .fp-row-label{font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
   .fp-topic-chip{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:9px;color:var(--ink);}
   .fp-topic-dot{width:5px;height:5px;flex:0 0 auto;}
-  .fp-entities-row{align-items:center;}
+  .fp-entities-row{align-items:center;min-height:52px;align-content:flex-start;}
   .fp-entity-badge{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);padding:2px 7px 2px 2px;}
   .fp-entity-type-tag{font-family:var(--font-mono);font-size:6.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;padding:1px 4px;}
   .fp-entity-type-tag.et-ORG{background:#00695F;}
   .fp-entity-type-tag.et-PERSON{background:var(--navy);}
   .fp-entity-type-tag.et-PLACE{background:var(--blue);}
   .fp-entity-text{font-family:var(--font-mono);font-size:9px;color:var(--ink);}
-  .fp-foot{display:flex;align-items:center;border-top:2px solid var(--ink);margin-top:auto;}
-  .fp-foot-cell{flex:1 1 0;padding:10px 14px;}
+  .fp-foot{display:flex;align-items:center;border-top:2px solid var(--ink);flex:0 0 auto;}
+  .fp-foot-cell{flex:1 1 0;padding:14px 22px;}
+  .fp-cta{display:block;text-align:left;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--navy);padding:11px 22px;flex:0 0 auto;transition:background .15s ease;cursor:pointer;}
+  .fp-cta:hover{background:#051335;}
   .fp-foot-cell:first-child{border-right:1px solid var(--line);}
   .fp-foot-num{display:block;line-height:1.2;font-family:var(--font-mono);font-weight:600;font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums;}
   .fp-foot-label{display:block;line-height:1.2;font-family:var(--font-mono);font-size:8px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
@@ -219,19 +242,31 @@
   .fp-ei-category.fp-cat-established{color:#125e8a;}
   .fp-ei-category.fp-cat-emerging{color:#a15c00;}
   .fp-ei-category.fp-cat-limited{color:var(--ink-faint);}
-  .fp-back-title{font-weight:900;font-size:14px;color:var(--navy-deep);}
-  .fp-back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;}
+  .fp-back-title{font-weight:900;font-size:19px;color:var(--navy-deep);padding-right:26px;}
+  .fp-back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;}
   .fp-back-meta-item{min-width:0;}
-  .fp-back-meta-item .k{display:block;font-size:9px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;}
-  .fp-back-meta-item .v{display:block;font-size:12px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .fp-back-meta-item .v a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
   .fp-back-meta-item.span2{grid-column:1/-1;}
-  .fp-back-bio{font-size:11.5px;color:var(--ink-dim);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-  .fp-back-section{border-top:1px solid var(--line);padding-top:6px;}
-  .fp-back-section-label{font-size:9px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+  .fp-back-meta-item .k, .fp-back-meta-single .k{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px;}
+  .fp-back-meta-item .v, .fp-back-meta-single .v{display:block;font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;}
+  .fp-back-meta-item .v a, .fp-back-meta-single .v a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .fp-back-meta-single{margin-top:2px;}
+  .fp-back-bio{font-size:12px;color:var(--ink-dim);line-height:1.55;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .fp-back-section{border-top:1px solid var(--line);padding-top:10px;}
+  .fp-back-block{}
+  .fp-back-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;}
   .fp-tag-row{display:flex;flex-wrap:wrap;gap:5px;}
+  .fp-tag-row{display:flex;flex-wrap:wrap;gap:5px;}
+  .fp-tag{font-size:10.5px;color:var(--navy);background:var(--bg-alt);border-radius:0;padding:3px 7px;white-space:nowrap;}
+  .fp-tag-more{color:var(--ink-faint);}
+  .fp-newsroom-size{font-size:12.5px;color:var(--ink);}
+  .fp-ei-bars{display:flex;flex-direction:column;gap:6px;}
+  .fp-ei-bar-row{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:8px;}
+  .fp-ei-bar-label{font-size:10px;color:var(--ink-faint);}
+  .fp-ei-bar-track{background:var(--bg-alt);border-radius:0;height:6px;overflow:hidden;}
+  .fp-ei-bar-fill{height:100%;background:var(--navy);border-radius:0;}
   .fp-social-chips{display:flex;flex-wrap:wrap;gap:6px;}
   .fp-social-chip{display:flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:var(--navy);background:var(--bg-alt);border-radius:0;padding:3px 8px;text-decoration:none;white-space:nowrap;}
+  .fp-back-empty{margin:auto 0;text-align:center;color:var(--ink-faint);font-size:12.5px;}owrap;}
   .fp-back-empty{margin:auto 0;text-align:center;color:var(--ink-faint);font-size:12.5px;}
 
   .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
@@ -616,6 +651,7 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
         <span class="kicker">Fingerprints</span>
         <h2>Every publisher with a unique and dynamic signature.</h2>
         <p class="lede">Beyond the aggregate numbers, each mapped source has its own topical fingerprint &mdash; the unique mix of subjects it covers. No two below look alike. Flip a card for detail, the same way it works on the full Fingerprints page.</p>
+        <a class="fp-see-link" href="fingerprints.html">See every publisher's fingerprint &rarr;</a>
       </div>
       <div class="fp-head-graphic" aria-hidden="true">
         <svg viewBox="0 0 200 200" class="fp-radar-mark">
@@ -624,6 +660,9 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
               <stop offset="0%" stop-color="var(--red)" stop-opacity="0"/>
               <stop offset="100%" stop-color="var(--red)" stop-opacity="0.5"/>
             </linearGradient>
+            <clipPath id="fp-radar-clip">
+              <polygon points="100.0,20.0 156.6,43.4 180.0,100.0 156.6,156.6 100.0,180.0 43.4,156.6 20.0,100.0 43.4,43.4"/>
+            </clipPath>
           </defs>
           <polygon class="fp-radar-ring" points="100.0,70.0 121.2,78.8 130.0,100.0 121.2,121.2 100.0,130.0 78.8,121.2 70.0,100.0 78.8,78.8"/>
           <polygon class="fp-radar-ring" points="100.0,45.0 138.9,61.1 155.0,100.0 138.9,138.9 100.0,155.0 61.1,138.9 45.0,100.0 61.1,61.1"/>
@@ -640,15 +679,19 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
             <path class="fp-radar-sweep" d="M100,100 L180,100 A80,80 0 0 0 156.6,43.4 Z"/>
           </g>
           <g class="fp-radar-trace-group">
-            <polygon class="fp-radar-trace" points="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6"/>
-            <circle class="fp-radar-dot" cx="100.0" cy="22.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="128.3" cy="71.7" r="3.2"/>
-            <circle class="fp-radar-dot" cx="162.0" cy="100.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="124.7" cy="124.7" r="3.2"/>
-            <circle class="fp-radar-dot" cx="100.0" cy="170.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="68.2" cy="131.8" r="3.2"/>
-            <circle class="fp-radar-dot" cx="45.0" cy="100.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="64.6" cy="64.6" r="3.2"/>
+            <polygon class="fp-radar-trace" points="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6">
+              <animate attributeName="points" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6;100.0,70.0 148.1,51.9 148.0,100.0 152.3,152.3 100.0,138.0 59.0,141.0 34.0,100.0 70.3,70.3;100.0,42.0 118.4,81.6 172.0,100.0 131.1,131.1 100.0,166.0 78.8,121.2 52.0,100.0 47.7,47.7;100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6"/>
+              <animate attributeName="stroke" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/>
+              <animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red-wash);rgba(2,32,105,0.10);var(--red-wash);var(--red-wash)"/>
+            </polygon>
+            <circle class="fp-radar-dot" cx="100.0" cy="22.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="22.0;70.0;42.0;22.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="128.3" cy="71.7" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="128.3;148.1;118.4;128.3"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="71.7;51.9;81.6;71.7"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="162.0" cy="100.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="162.0;148.0;172.0;162.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="124.7" cy="124.7" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="124.7;152.3;131.1;124.7"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="124.7;152.3;131.1;124.7"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="100.0" cy="170.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="170.0;138.0;166.0;170.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="68.2" cy="131.8" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="68.2;59.0;78.8;68.2"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="131.8;141.0;121.2;131.8"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="45.0" cy="100.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="45.0;34.0;52.0;45.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="64.6" cy="64.6" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="64.6;70.3;47.7;64.6"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="64.6;70.3;47.7;64.6"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
           </g>
         </svg>
       </div>
@@ -1107,30 +1150,39 @@ const FP_DATA = [
     const rows = [];
     rows.push(`<div class="fp-back-title">${p.name}</div>`);
     const meta = [];
-    if(p.url) meta.push(`<div class="fp-back-meta-item span2"><span class="k">Website</span><span class="v"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></span></div>`);
-    meta.push(`<div class="fp-back-meta-item"><span class="k">Type</span><span class="v">${p.entityType}</span></div>`);
+    if(p.url) meta.push(`<div class="fp-back-meta-item"><span class="k">Website</span><span class="v"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></span></div>`);
+    if(e && e.established) meta.push(`<div class="fp-back-meta-item"><span class="k">Founded</span><span class="v">${e.established}</span></div>`);
     if(e && e.hqCity) meta.push(`<div class="fp-back-meta-item"><span class="k">HQ</span><span class="v">${e.hqCity}, ${p.country}</span></div>`);
     else meta.push(`<div class="fp-back-meta-item"><span class="k">Country</span><span class="v">${p.country}</span></div>`);
-    if(e && e.established) meta.push(`<div class="fp-back-meta-item"><span class="k">Founded</span><span class="v">${e.established}</span></div>`);
+    if(e && e.coverageType) meta.push(`<div class="fp-back-meta-item"><span class="k">Coverage</span><span class="v">${e.coverageType}</span></div>`);
     rows.push(`<div class="fp-back-meta-grid">${meta.join('')}</div>`);
     if(e && e.bioShort) rows.push(`<p class="fp-back-bio">${e.bioShort}</p>`);
-    const ei = p.engagementIndex;
-    if(ei && ei.confidence !== 'not_available' && ei.breadthScore != null && ei.reachScore != null){
-      rows.push(`<div class="fp-back-section"><div class="fp-back-section-label">Engagement index breakdown</div>
-        <div class="fp-ei-breakdown">
-          <div class="fp-ei-breakdown-row"><span>Platform breadth</span><div class="fp-ei-breakdown-track"><div class="fp-ei-breakdown-fill" style="width:${ei.breadthScore}%"></div></div><span>${Math.round(ei.breadthScore)}%</span></div>
-          <div class="fp-ei-breakdown-row"><span>Reach vs. peers</span><div class="fp-ei-breakdown-track"><div class="fp-ei-breakdown-fill" style="width:${ei.reachScore}%"></div></div><span>${Math.round(ei.reachScore)}%</span></div>
-        </div>
-      </div>`);
+    if(e && e.contentType && e.contentType.length){
+      const shown = e.contentType.slice(0,3);
+      const extra = e.contentType.length - shown.length;
+      rows.push(`<div class="fp-back-block"><div class="fp-back-section-label">Editorial focus</div><div class="fp-tag-row">${shown.map(t=>`<span class="fp-tag">${t}</span>`).join('')}${extra>0?`<span class="fp-tag fp-tag-more">+${extra}</span>`:''}</div></div>`);
+    }
+    if(e && e.staff){
+      const s = e.staff;
+      const total = (s.full_time||0)+(s.part_time||0)+(s.freelance||0)+(s.volunteer||0);
+      const types = [];
+      if(s.full_time) types.push('Full-time');
+      if(s.part_time) types.push('Part-time');
+      if(s.freelance) types.push('Freelance');
+      if(s.volunteer) types.push('Volunteer');
+      if(total>0){
+        const size = total<=5?'Small':total<=20?'Medium':'Large';
+        rows.push(`<div class="fp-back-block"><div class="fp-back-section-label">Newsroom size</div><div class="fp-newsroom-size">${size}${types.length?' &middot; '+types.join(', '):''}</div></div>`);
+      }
     }
     if(e && e.social && e.social.length){
-      const chips = e.social.slice(0,4).map(s => {
+      const chips = e.social.map(s => {
         const label = SOCIAL_LABELS[s.platform] || s.platform;
         const count = formatFollowers(s.followers);
-        const text = count ? `${label} \u00b7 ${count}` : label;
+        const text = count ? `${label} &middot; ${count}` : label;
         return s.url ? `<a class="fp-social-chip" href="${s.url}" target="_blank" rel="noopener">${text}</a>` : `<span class="fp-social-chip">${text}</span>`;
       }).join('');
-      rows.push(`<div class="fp-back-section"><div class="fp-back-section-label">Social reach</div><div class="fp-social-chips">${chips}</div></div>`);
+      rows.push(`<div class="fp-back-block"><div class="fp-back-section-label">Social reach</div><div class="fp-social-chips">${chips}</div></div>`);
     }
     if(!e) rows.push(`<div class="fp-back-empty">No additional organizational detail available for this source.</div>`);
     return rows.join('');
@@ -1143,7 +1195,9 @@ const FP_DATA = [
     {min:0, label:'Limited reach', cls:'fp-cat-limited', color:'#94A3B8'},
   ];
   function fpEngagementCategory(score){
-    return FP_ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+    const cat = FP_ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+    const hue = Math.max(0, Math.min(120, (score / 100) * 120));
+    return { ...cat, color: 'hsl(' + hue.toFixed(0) + ', 72%, 30%)' };
   }
   function fpEngagementGaugeSVG(score, color){
     const r = 18, stroke = 4, size = (r + stroke) * 2, c = size / 2;
@@ -1202,8 +1256,10 @@ const FP_DATA = [
         <line x1="100" y1="100" x2="43.4" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
         <line x1="100" y1="100" x2="20.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
         <line x1="100" y1="100" x2="43.4" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
-        <polygon points="${polygon}" fill="rgba(2,32,105,0.08)" stroke="#022069" stroke-width="1.8" stroke-linejoin="round"/>
-        ${dots.map(d=>`<circle cx="${d.x}" cy="${d.y}" r="3.4" fill="${d.color}"/>`).join('')}
+        <g class="fp-radar-anim">
+          <polygon points="${polygon}" fill="rgba(2,32,105,0.08)" stroke="#022069" stroke-width="1.8" stroke-linejoin="round"/>
+          ${dots.map(d=>`<circle cx="${d.x}" cy="${d.y}" r="3.4" fill="${d.color}"/>`).join('')}
+        </g>
       </svg>
       ${labels}
     </div>`;
@@ -1215,7 +1271,7 @@ const FP_DATA = [
   }
   function fpEntitiesHTML(p){
     if(!p.topEntities || !p.topEntities.length) return '';
-    return `<div class="fp-row fp-entities-row"><span class="fp-row-label">Entities</span>${p.topEntities.slice(0,3).map(e=>`<span class="fp-entity-badge"><span class="fp-entity-type-tag et-${e.type}">${e.type}</span><span class="fp-entity-text">${escapeHtml(e.text)}</span></span>`).join('')}</div>`;
+    return `<div class="fp-row fp-entities-row"><span class="fp-row-label">Entities</span>${p.topEntities.slice(0,5).map(e=>`<span class="fp-entity-badge"><span class="fp-entity-type-tag et-${e.type}">${e.type}</span><span class="fp-entity-text">${escapeHtml(e.text)}</span></span>`).join('')}</div>`;
   }
 
   function cardHTML(p, id){
@@ -1225,18 +1281,16 @@ const FP_DATA = [
         <div class="fp-flip-inner" data-flipped="false" role="button" tabindex="0" style="--accent:${accent}" aria-label="${p.name} card. Press to see more detail.">
           <div class="fp-face fp-front">
             <div class="fp-top">
-              <div class="fp-top-row">
-                <div class="fp-card-name">${p.name}</div>
-                <span class="fp-type-badge" data-type="${p.entityType}">${p.entityType}</span>
-              </div>
+              <span class="fp-flip-icon">&#8635;</span>
+              <div class="fp-card-name">${p.name}</div>
+              <span class="fp-type-badge" data-type="${p.entityType}">${p.entityType}</span>
               <div class="fp-meta-row"><span>${p.country}</span><span>&middot;</span><span class="fp-lang">${p.lang}</span></div>
             </div>
+            <div class="fp-divider"></div>
             <div class="fp-body">
               <div class="fp-radar-box">${fpRadarSVG(p)}</div>
-              ${fpTopTopicsHTML(p)}
               ${fpEntitiesHTML(p)}
             </div>
-            <span class="fp-flip-icon">&#8635;</span>
             <div class="fp-foot">
               <div class="fp-foot-cell"><span class="fp-foot-num">${p.total.toLocaleString()}</span><span class="fp-foot-label">Articles</span></div>
               ${fpEngagementFootHTML(p)}
@@ -1291,14 +1345,26 @@ const FP_DATA = [
     container.innerHTML = FP_DATA.map((p,i)=>cardHTML(p,i)).join('');
     container.querySelectorAll('.fp-flip-inner').forEach(wireCard);
     // radar now rendered inline as SVG in cardHTML
-    container.querySelectorAll('.fp-topics-row, .fp-entities-row').forEach(clampRowToTwoLines);
+    container.querySelectorAll('.fp-entities-row').forEach(clampRowToTwoLines);
+    const radarObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.remove('is-in');
+          void entry.target.offsetWidth;
+          entry.target.classList.add('is-in');
+        } else {
+          entry.target.classList.remove('is-in');
+        }
+      });
+    }, {root: container, threshold: 0.1});
+    container.querySelectorAll('.fp-radar-box').forEach(box=>radarObserver.observe(box));
   }
 
   const prev = document.getElementById('fpPrev');
   const next = document.getElementById('fpNext');
   if(container && prev && next){
     const scrollByCard = (dir) => {
-      container.scrollBy({left: dir * 288, behavior: 'smooth'});
+      container.scrollBy({left: dir * 356, behavior: 'smooth'});
       remountAllRadars();
     };
     prev.addEventListener('click', () => scrollByCard(-1));
