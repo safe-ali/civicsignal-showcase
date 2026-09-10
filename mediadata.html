@@ -68,6 +68,10 @@
     .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
     .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
   }
+  .cs-footer-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:760px){.cs-footer-cols{grid-template-columns:1fr;gap:32px;}}
+  .cs-footer-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;}
+  .cs-footer-logos img{max-width:100%;}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -382,14 +386,14 @@ if(csNavToggle && csNavLinks){
 </section>
 
 <section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
-  <div class="wrap" style="display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);">
+  <div class="wrap cs-footer-cols">
     <div>
       <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
       <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
       <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
     </div>
     <div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;">
+      <div class="cs-footer-logos">
         <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
         <span style="width:1px;height:42px;background:var(--line);"></span>
         <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
